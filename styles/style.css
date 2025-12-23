@@ -13,4 +13,419 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--font-main);
+  font-variation-settings: "wght" var(--font-weight-main-text);
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.content-section {
+  inline-size: var(--layout-width);
+  margin-inline: auto;
+}
+
+/* Шапка */
+
+.header {
+  margin-block-start: clamp(
+    6.25rem,
+    2.6442rem + 15.3846vw,
+    9.375rem
+  ); /* 100 и 150 */
+  border: var(--border);
+  background-color: var(--color-bg);
+}
+
+.header__logo-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.125rem, 0.9808rem + 0.6154vw, 1.25rem);
+  padding-block: clamp(
+    7.625rem,
+    7.0481rem + 2.4615vw,
+    8.125rem
+  ); /* 122 и 130 сверху снизу*/
+  padding-inline: clamp(
+    1rem,
+    -6.6803rem + 32.7692vw,
+    7.65625rem
+  ); /* 16 и 122.5 по бокам */
+}
+
+.header__logo,
+.header__title {
+  font-family: var(--font-accent);
+  line-height: 1;
+  text-transform: var(--text-transform);
+}
+
+.header__logo {
+  font-size: clamp(3.0625rem, 1.9087rem + 4.9231vw, 4.0625rem); /* 49 и 65 */
+}
+
+.header__title {
+  font-size: clamp(0.875rem, 0.226rem + 2.7692vw, 1.4375rem); /* 14 и 23 */
+}
+
+/* Основной блок */
+
+.main {
+  padding-block-start: 6.25rem;
+  padding-block-end: 0;
+}
+
+.cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3.125rem, 2.9808rem + 0.6154vw, 3.25rem);
+}
+
+.card {
+  border: var(--border);
+  background-color: var(--color-bg);
+}
+
+.card__title {
+  padding: 6px 10px;
+  font-variation-settings: "wght" var(--font-weight-main-title);
+  font-size: var(--main-font-size); /* 18px */
+}
+
+.card__image {
+  display: block;
+  inline-size: var(--picture-size);
+  block-size: var(--picture-size);
+  object-fit: cover;
+  object-position: center;
+}
+
+.card__image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.card__image-mix {
+  filter: sepia(60%) brightness(150%);
+}
+
+.card__image-saturate {
+  filter: saturate(2.2);
+}
+
+.card__image-hew-rotate {
+  filter: hue-rotate(35deg);
+}
+
+.card__image-brightness {
+  filter: brightness(150%);
+}
+
+.card__image-sepia {
+  filter: sepia(80%);
+}
+
+.card__image-blur {
+  filter: blur(0.1rem);
+}
+
+.card__image-combo {
+  filter: contrast(1.2) saturate(1.6) hue-rotate(320deg) brightness(1.05);
+}
+
+.card__label {
+  position: absolute;
+  inset-block-start: 23px;
+  inset-inline-end: 23px;
+  font-family: var(--font-accent);
+  font-size: var(--label-font-size);
+  line-height: 1;
+  text-transform: var(--text-transform);
+  opacity: 0.5;
+  mix-blend-mode: hard-light;
+  color: var(--color-main);
+  text-shadow: -1px 0 var(--label-text-stroke-color),
+    1px 0 var(--label-text-stroke-color), 0 -1px var(--label-text-stroke-color),
+    0 1px var(--label-text-stroke-color);
+  z-index: 1;
+}
+
+@supports (-webkit-text-stroke: 1px #fff) {
+  .card__label {
+    color: var(--color-main);
+    -webkit-text-stroke: 1px var(--label-text-stroke-color);
+    text-shadow: none;
+  }
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.563rem; /* 25px */
+  padding: 26px 25px 25px;
+}
+
+.card__text {
+  font-size: var(--main-font-size);
+}
+
+.card__buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 7px;
+}
+
+.card__icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 37px;
+  block-size: 37px;
+  background-color: transparent;
+  border: 2px solid transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border-color: var(--border-color-main);
+}
+
+/* сердечко */
+
+.like-icon {
+  display: block;
+  inline-size: var(--like-icon-inline-size);
+  block-size: var(--like-icon-block-size);
+  transform-origin: center;
+}
+
+.like-icon .sparks {
+  opacity: 0;
+}
+
+.like-icon .contour {
+  transition: fill 0.1s linear;
+}
+
+.like-icon .core {
+  fill: transparent;
+  transition: fill 0.3s linear 0.03s;
+}
+
+.like-icon .main-body {
+  fill: transparent;
+  transition: fill 0.3s linear;
+}
+
+.like-icon:hover .core {
+  fill: var(--hover-fill-color);
+  transition-delay: 0s;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--hover-fill-color);
+  transition-delay: 0.05s;
+}
+
+.like-icon:active .core {
+  fill: var(--active-fill-color);
+  transition-delay: 0s;
+}
+
+.like-icon:active .main-body {
+  fill: var(--active-fill-color);
+  transition-delay: 0.05s;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--liked-fill-color);
+  transition: fill 0.3s linear;
+  transition-delay: 0s;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--liked-fill-color);
+  transition: fill 0.3s linear;
+  transition-delay: 0.05s;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--liked-fill-color);
+  transition: fill 0.3s linear;
+  transition-delay: 0.06s;
+}
+
+.like-icon.is-liked .heart {
+  animation: heart-scale 0.3s ease-in 0.1s 1;
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparks 0.3s ease-in 0.3s 1;
+}
+
+/* кнопка like */
+
+.card__like-button {
+  inline-size: var(--like-button-inline-size);
+  block-size: var(--like-button-block-size);
+  padding-block: var(--like-button-padding-block);
+  padding-inline: var(--like-button-padding-inline);
+}
+
+.button__text {
+  font-family: var(--font-accent);
+  font-size: var(--button-font-size);
+  line-height: 0.9;
+}
+
+/* футер */
+.footer {
+  padding-block: 50px 100px;
+  padding-inline: clamp(
+    2.125rem,
+    -8.5481rem + 45.5385vw,
+    11.375rem
+  ); /* 34px и 182px */
+}
+
+.footer__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  inline-size: 100%;
+  min-block-size: var(--footer-button-min-height);
+  gap: 0.5rem; /* 8px */
+  cursor: pointer;
+}
+
+.footer__button-icon {
+  inline-size: var(--footer-icon-size);
+  block-size: var(--footer-icon-size);
+}
+
+.dialog {
+  display: none;
+  border: var(--border);
+  padding-block: var(--dialog-padding-block);
+  padding-inline: var(--dialog-padding-inline-mobile);
+  inline-size: clamp(
+    21.3125rem,
+    20.4471rem + 3.6923vw,
+    22.0625rem
+  ); /* 341px и 353px */
+  background-color: var(--color-bg);
+  margin: auto;
+}
+
+.dialog[open] {
+  display: block;
+}
+
+.dialog[open]::backdrop {
+  background-color: rgb(0 0 0 / 0.75);
+}
+
+.dialog__content {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: center;
+  column-gap: 1.563rem; /* 25px */
+  margin-block-end: 30px;
+}
+
+.dialog__text {
+  font-family: var(--font-accent);
+  font-size: var(--button-font-size);
+  text-transform: var(--text-transform);
+  line-height: 1.5;
+}
+
+.dialog__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 100%;
+  block-size: 38px;
+  cursor: pointer;
+}
+
+.dialog__button-icon {
+  inline-size: var(--dialog-icon-size);
+  block-size: var(--dialog-icon-size);
+}
+
+/* Кнопка Like, «Сохранить на память» и «ОК»  */
+  .button {
+    border: var(--border);
+    transition: box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    cursor: pointer;
+  }
+
+  .button:focus {
+    outline: none;
+    box-shadow: 2px 2px 0 var(--button-fill-color);
+  }
+
+  .button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--button-fill-color);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .button:hover::before {
+    transform: translateX(0);
+  }
+
+  .button__text,
+  .footer__button-icon {
+    position: relative;
+    mix-blend-mode: difference;
+  }
+
+@media (width > 375px) {
+  .header {
+    margin-block-start: 100px;
+  }
+
+  .main { 
+    padding-block-start: 6rem;
+  }
+
+  .card__title {
+    padding: 3px 10px;
+  }
+
+  .card__content {
+    padding: 30px 25px 25px;
+  }
+
+  .footer__button {
+    flex-direction: row;
+    min-block-size: var(--footer-button-min-height-desktop);
+  }
+
+  .footer__button-icon {
+    inline-size: var(--footer-icon-size-desktop);
+    block-size: var(--footer-icon-size-desktop);
+  }
+
+  .dialog {
+    padding-inline: var(--dialog-padding-inline-desktop);
+  }
 }

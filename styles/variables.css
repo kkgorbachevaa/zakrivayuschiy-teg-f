@@ -1,1 +1,73 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+
+:root {
+  --font-main: 'Inter', sans-serif;
+  --font-accent: 'PressStart2P', sans-serif;
+  --font-weight-main-text: 410;
+  --font-weight-main-title: 715;
+  --bg-gradient:
+    repeating-linear-gradient(
+      to right,
+      #d3d3d3 0 2px,
+      transparent 2px 4px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      #d3d3d3 0 2px,
+      transparent 2px 4px
+    ),
+    linear-gradient(
+      to bottom,
+      #e7e7e7 0%,
+      #e7e7e7 0.01%,
+      #1a1a1a 100%
+    );
+  --layout-width: clamp(375px, 100vw, 700px);
+  --text-transform: uppercase;
+
+  /* общие */
+  --color-main: #000;
+  --color-bg: #fff;
+  --border: 2px solid #000;
+  --main-font-size: 1.125rem; /* 18px */
+  --picture-size: clamp(23.1875rem, -0.25rem + 100vw, 43.5rem);
+
+  /* кнопка с лайком */
+  --like-button-inline-size: 130px;
+  --like-button-block-size: 38px;
+  --like-button-padding-block: 9px;
+  --like-button-padding-inline: 17px;
+
+  /* общие кнопки */
+  --button-font-size: 0.875rem; /* 14px */
+  --button-text-color: #fff;
+  --button-bg-color: #fff;
+  --button-fill-color: #000;
+
+  /* лейбл */
+  --label-text-stroke-color: #fff;
+  --label-font-size: 0.875rem; /* 14px */
+
+    /* футер */
+  --footer-button-min-height: 84px;
+  --footer-button-min-height-desktop: 55px;
+  --footer-icon-size: 28px;
+  --footer-icon-size-desktop: 21px;
+
+  /* dialog */
+  --dialog-padding-block: 30px;
+  --dialog-padding-inline-mobile: 40px;
+  --dialog-padding-inline-desktop: 30px;
+  --dialog-icon-size: 39px;
+
+  /* сердечко */
+
+  --like-icon-inline-size: 39px;
+  --like-icon-block-size: 36px;
+  --border-color-main: #000;
+  --contour-color: #000;
+  --animation-fill-color: red;
+  --hover-fill-color: #000;
+  --active-fill-color: red;
+  --liked-fill-color: red;
+}
