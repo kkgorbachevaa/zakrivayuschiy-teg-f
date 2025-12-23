@@ -364,46 +364,46 @@
 }
 
 /* Кнопка Like, «Сохранить на память» и «ОК»  */
-  .button {
-    border: var(--border);
-    transition: box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    background-color: var(--button-bg-color);
-    color: var(--button-text-color);
-    cursor: pointer;
-  }
+.button {
+  border: var(--border);
+  transition: box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  cursor: pointer;
+}
 
-  .button:focus {
-    outline: none;
-    box-shadow: 2px 2px 0 var(--button-fill-color);
-  }
+.button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0 var(--button-fill-color);
+}
 
-  .button::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: var(--button-fill-color);
-    transform: translateX(-100%);
-    transition: transform 0.5s ease-in-out;
-  }
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--button-fill-color);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+}
 
-  .button:hover::before {
-    transform: translateX(0);
-  }
+.button:hover::before {
+  transform: translateX(0);
+}
 
-  .button__text,
-  .footer__button-icon {
-    position: relative;
-    mix-blend-mode: difference;
-  }
+.button__text,
+.footer__button-icon {
+  position: relative;
+  mix-blend-mode: difference;
+}
 
 @media (width > 375px) {
   .header {
     margin-block-start: 100px;
   }
 
-  .main { 
+  .main {
     padding-block-start: 6rem;
   }
 
