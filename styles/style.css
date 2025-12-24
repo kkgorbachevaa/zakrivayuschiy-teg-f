@@ -21,7 +21,9 @@
 }
 
 .content-section {
-  inline-size: var(--layout-width);
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: var(--layout-width);
   margin-inline: auto;
 }
 
@@ -35,6 +37,7 @@
   ); /* 100 и 150 */
   border: var(--border);
   background-color: var(--color-bg);
+  margin-inline: auto;
 }
 
 .header__logo-group {
@@ -74,6 +77,7 @@
 .main {
   padding-block-start: 6.25rem;
   padding-block-end: 0;
+  margin-inline: auto;
 }
 
 .cards-list {
@@ -95,13 +99,14 @@
 
 .card__image {
   display: block;
-  inline-size: var(--picture-size);
-  block-size: var(--picture-size);
+  inline-size: 100%;
+  block-size: 100%;
   object-fit: cover;
   object-position: center;
 }
 
 .card__image-container {
+  aspect-ratio: 1/1;
   position: relative;
   overflow: hidden;
 }
@@ -114,7 +119,7 @@
   filter: saturate(2.2);
 }
 
-.card__image-hew-rotate {
+.card__image-hue-rotate {
   filter: hue-rotate(35deg);
 }
 
@@ -151,10 +156,10 @@
   z-index: 1;
 }
 
-@supports (-webkit-text-stroke: 1px #fff) {
+@supports ((-webkit-text-stroke: 1px #fff) or (text-stroke: 1px #fff)) {
   .card__label {
-    color: var(--color-main);
     -webkit-text-stroke: 1px var(--label-text-stroke-color);
+    text-stroke: 1px var(--label-text-stroke-color);
     text-shadow: none;
   }
 }
@@ -167,6 +172,9 @@
 }
 
 .card__text {
+  inline-size: 100%;
+  max-inline-size: 375px;
+  margin-inline: auto;
   font-size: var(--main-font-size);
 }
 
@@ -175,6 +183,8 @@
   justify-content: flex-end;
   align-items: center;
   gap: 7px;
+  max-inline-size: 375px;
+  margin-inline: auto;
 }
 
 .card__icon-button {
@@ -186,7 +196,6 @@
   background-color: transparent;
   border: 2px solid transparent;
   padding: 0;
-  cursor: pointer;
   transition: border-color 0.3s ease;
 }
 
@@ -202,9 +211,8 @@
 
 .like-icon {
   display: block;
-  inline-size: var(--like-icon-inline-size);
-  block-size: var(--like-icon-block-size);
-  transform-origin: center;
+  inline-size: 39px;
+  block-size: 36px;
 }
 
 .like-icon .sparks {
@@ -265,6 +273,7 @@
 
 .like-icon.is-liked .heart {
   animation: heart-scale 0.3s ease-in 0.1s 1;
+  transform-origin: center;
 }
 
 .like-icon.is-liked .sparks {
@@ -274,10 +283,10 @@
 /* кнопка like */
 
 .card__like-button {
-  inline-size: var(--like-button-inline-size);
-  block-size: var(--like-button-block-size);
-  padding-block: var(--like-button-padding-block);
-  padding-inline: var(--like-button-padding-inline);
+  inline-size: 130px;
+  block-size: 38px;
+  padding-block: 9px;
+  padding-inline: 17px;
 }
 
 .button__text {
@@ -286,38 +295,39 @@
   line-height: 0.9;
 }
 
-/* футер */
-.footer {
+/* actions */
+.actions {
   padding-block: 50px 100px;
   padding-inline: clamp(
     2.125rem,
     -8.5481rem + 45.5385vw,
     11.375rem
   ); /* 34px и 182px */
+  margin-inline: auto;
 }
 
-.footer__button {
+.actions__button {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   inline-size: 100%;
-  min-block-size: var(--footer-button-min-height);
+  min-block-size: 84px;
   gap: 0.5rem; /* 8px */
-  cursor: pointer;
 }
 
-.footer__button-icon {
-  inline-size: var(--footer-icon-size);
-  block-size: var(--footer-icon-size);
+.actions__button-icon {
+  inline-size: 28px;
+  block-size: 28px;
 }
 
 .dialog {
   display: none;
   border: var(--border);
-  padding-block: var(--dialog-padding-block);
-  padding-inline: var(--dialog-padding-inline-mobile);
-  inline-size: clamp(
+  padding-block: 30px;
+  padding-inline: 40px;
+  inline-size: 100%;
+  max-inline-size: clamp(
     21.3125rem,
     20.4471rem + 3.6923vw,
     22.0625rem
@@ -355,12 +365,11 @@
   justify-content: center;
   inline-size: 100%;
   block-size: 38px;
-  cursor: pointer;
 }
 
 .dialog__button-icon {
-  inline-size: var(--dialog-icon-size);
-  block-size: var(--dialog-icon-size);
+  inline-size: 39px;
+  block-size: 39px;
 }
 
 /* Кнопка Like, «Сохранить на память» и «ОК»  */
@@ -393,7 +402,7 @@
 }
 
 .button__text,
-.footer__button-icon {
+.actions__button-icon {
   position: relative;
   mix-blend-mode: difference;
 }
@@ -415,17 +424,25 @@
     padding: 30px 25px 25px;
   }
 
-  .footer__button {
+  .actions__button {
     flex-direction: row;
-    min-block-size: var(--footer-button-min-height-desktop);
+    min-block-size: 55px;
   }
 
-  .footer__button-icon {
-    inline-size: var(--footer-icon-size-desktop);
-    block-size: var(--footer-icon-size-desktop);
+  .actions__button-icon {
+    inline-size: 21px;
+    block-size: 21px;
   }
 
   .dialog {
-    padding-inline: var(--dialog-padding-inline-desktop);
+    padding-inline: 30px;
+  }
+}
+
+@media (width >= 700px) {
+  .card__text,
+  .card__buttons {
+    max-inline-size: 100%; /* на десктопе текст по всей ширине карточки */
+    margin-inline: 0; /* и снова опирается на паддинги карточки */
   }
 }
