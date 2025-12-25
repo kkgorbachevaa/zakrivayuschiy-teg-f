@@ -173,8 +173,6 @@
 
 .card__text {
   inline-size: 100%;
-  max-inline-size: 375px;
-  margin-inline: auto;
   font-size: var(--main-font-size);
 }
 
@@ -183,8 +181,6 @@
   justify-content: flex-end;
   align-items: center;
   gap: 7px;
-  max-inline-size: 375px;
-  margin-inline: auto;
 }
 
 .card__icon-button {
@@ -293,6 +289,7 @@
   font-family: var(--font-accent);
   font-size: var(--button-font-size);
   line-height: 0.9;
+  white-space: nowrap;
 }
 
 /* actions */
@@ -311,9 +308,10 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  inline-size: 100%;
+  margin-inline: auto;
   min-block-size: 84px;
   gap: 0.5rem; /* 8px */
+  inline-size: 100%;
 }
 
 .actions__button-icon {
@@ -407,7 +405,7 @@
   mix-blend-mode: difference;
 }
 
-@media (width > 375px) {
+@media (width >= 700px) {
   .header {
     margin-block-start: 100px;
   }
@@ -436,13 +434,5 @@
 
   .dialog {
     padding-inline: 30px;
-  }
-}
-
-@media (width >= 700px) {
-  .card__text,
-  .card__buttons {
-    max-inline-size: 100%; /* на десктопе текст по всей ширине карточки */
-    margin-inline: 0; /* и снова опирается на паддинги карточки */
   }
 }
